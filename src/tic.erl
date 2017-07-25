@@ -64,8 +64,10 @@
 -define(GREGORIAN_SECONDS_TO_UNIX_EPOCH, 62167219200).
 
 
--spec datetime_to_epoch_msecs({calendar:datetime1970(), millisecond()}) ->
+-spec datetime_to_epoch_msecs({calendar:datetime1970(), millisecond()} | calendar:datetime1970()) ->
     epoch_milliseconds().
+datetime_to_epoch_msecs({{_,_,_},{_,_,_}} = DateTime) ->
+    datetime_to_epoch_msecs({DateTime, 0});
 datetime_to_epoch_msecs({Datetime, Msecs}) when Msecs >= 0, Msecs < 1000 ->
     Seconds = calendar:datetime_to_gregorian_seconds(Datetime),
     (Seconds - ?GREGORIAN_SECONDS_TO_UNIX_EPOCH) * 1000 + Msecs.
