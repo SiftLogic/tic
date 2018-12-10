@@ -256,7 +256,7 @@ local_datetime_to_utc(LocalDatetime, UtcOffset) ->
     %% Convert the the seconds in the local timezone to UTC.
     TimezoneMinInt  = binary_to_integer(TimezoneMin),
     TimezoneHourInt = binary_to_integer(TimezoneHour),
-    Offset = ((TimezoneHourInt * 3600 + TimezoneMinInt) * 60),
+    Offset = ((TimezoneHourInt * 60 + TimezoneMinInt) * 60),
     UtcSec =
         case Sign of
             $- -> LocalSec - Offset;
