@@ -70,7 +70,9 @@ t_iso8601_to_datetime_test(_) ->
     {{2012,05,19},{22,34,55}} =
         tic:iso8601_to_datetime(<<"2012-05-19T22:34:55Z">>),
     {{{2012,11,30},{9,1,0}},486} =
-        tic:iso8601_to_datetime(<<"2012-11-30T09:01:00.486Z">>).
+        tic:iso8601_to_datetime(<<"2012-11-30T09:01:00.486Z">>),
+    {{2018,12,06},{20,0,0}} =
+        tic:iso8601_to_datetime(<<"2018-12-07T00:00:00-04:00">>).
 
 t_gregorian_seconds_to_iso8601_test(_) ->
     GregorianSec =
